@@ -1,0 +1,14 @@
+REDIRECTS: ON
+NUGET
+  remote: https://www.nuget.org/api/v2
+  specs:
+    Microsoft.ServiceFabric (4.0.1427-preview1) - framework: >= net451
+    Microsoft.ServiceFabric.Actors (1.0.328-preview1) - framework: >= net451
+      Microsoft.ServiceFabric (>= 4.0.1427-preview1)
+      Microsoft.ServiceFabric.Data (>= 1.0.328-preview1)
+      Microsoft.ServiceFabric.Services (>= 1.0.328-preview1)
+    Microsoft.ServiceFabric.Data (1.0.328-preview1) - framework: >= net451
+      Microsoft.ServiceFabric (>= 4.0.1427-preview1)
+    Microsoft.ServiceFabric.Services (1.0.328-preview1) - framework: >= net451
+      Microsoft.ServiceFabric (>= 4.0.1427-preview1)
+      Microsoft.ServiceFabric.Data (>= 1.0.328-preview1)

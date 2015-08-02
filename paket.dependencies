@@ -1,0 +1,6 @@
+redirects: on
+
+source https://api.nuget.org/v3/index.json
+source https://www.nuget.org/api/v2/
+
+nuget Microsoft.ServiceFabric.Actors 1.0.328-preview1 framework: >= net451
