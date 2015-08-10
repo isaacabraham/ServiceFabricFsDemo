@@ -57,10 +57,14 @@
   <Import Project="$(FSharpTargetsPath)" />
   <ItemGroup>
     <Compile Include="AssemblyInfo.fs" />
-    <Compile Include="Cat.fs" />
-    <Compile Include="Program.fs" />
+    <Compile Include="Adapters.fs" />
     <Content Include="PackageRoot\Config\Settings.xml" />
     <Content Include="PackageRoot\ServiceManifest.xml" />
+    <Compile Include="Cats\PatternMatchingCat.fs" />
+    <Compile Include="Cats\FunctionalCat.fs" />
+    <Compile Include="Cats\DisfunctionalCat.fs" />
+    <Compile Include="Cats\MutableCat.fs" />
+    <Compile Include="Program.fs" />
     <Content Include="App.config" />
     <None Include="paket.references" />
   </ItemGroup>
@@ -159,4 +163,5 @@
       </ItemGroup>
     </When>
   </Choose>
+  <Import Project="..\..\.paket\paket.targets" />
 </Project>

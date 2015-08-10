@@ -7,17 +7,18 @@ open System.Threading
 open System.Threading.Tasks
 open Microsoft.ServiceFabric
 open Microsoft.ServiceFabric.Actors
+open FSharp.Data.UnitSystems.SI.UnitSymbols
 
-type Cat() =
-    inherit Actor<CatState>()
+type MutableCat() =
+    inherit Actor<MutableCatState>()
     let emptyTask() = Task.FromResult() :> Task
     let favouriteFood = "Sheba"
 
     interface ICat with
         // Side-effect-free actions
-        member __.Colour() = Task.FromResult "Black"
-        member __.FavouriteFood() = Task.FromResult favouriteFood
-        member this.GetState() = Task.FromResult this.State
+        [<Readonly>] member __.Colour() = Task.FromResult "Black"
+        [<Readonly>] member __.FavouriteFood() = Task.FromResult favouriteFood
+        [<Readonly>] member this.GetState() = Task.FromResult { CatHappiness = this.State.CatHappiness; OwnerRating = this.State.OwnerRating; OwnerHappiness = this.State.OwnerHappiness; HungerLevel = this.State.HungerLevel; Weight = this.State.Weight * 1.<kg> }
         
         // Side-effect-full actions
         member this.Jump(destination) =
@@ -29,7 +30,7 @@ type Cat() =
             | "Table" -> this.State.OwnerHappiness <- this.State.OwnerHappiness - 2
             | "Bed" -> this.State.OwnerHappiness <- this.State.OwnerHappiness - 1
             | _ -> ()
-            emptyTask()
+            Task.FromResult() :> Task
 
         member this.Purr() =
             this.State.CatHappiness <- this.State.CatHappiness + 1

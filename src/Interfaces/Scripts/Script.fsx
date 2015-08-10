@@ -28,4 +28,4 @@ cat.Eat "Sheba"
 cat.Meow 3 (TimeSpan.FromHours 6.)
 cat.Purr()
 
-async { return! cat.GetState() |> Async.AwaitTask } |> Async.RunSynchronously
+let state = async { return! cat.GetState() |> Async.AwaitTask } |> Async.RunSynchronously

@@ -15,4 +15,4 @@ type ICat =
 
     abstract member FavouriteFood : unit -> string Task
     abstract member Colour : unit -> string Task
-    abstract member GetState : unit -> CatState Task
+    abstract member GetState : unit -> ImmutableCatState Task
