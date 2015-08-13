@@ -1,0 +1,15 @@
+// Warning: generated file; your changes could be lost when a new file is generated.
+#I __SOURCE_DIRECTORY__
+#r @"..\..\..\packages\FsPickler\lib\net45\FsPickler.dll"
+#r @"..\..\..\packages\Microsoft.ServiceFabric.Data\lib\net45\Microsoft.ServiceFabric.Data.dll"
+#r @"..\..\..\packages\Microsoft.ServiceFabric.Services\lib\net45\Microsoft.ServiceFabric.Services.dll"
+#r @"..\..\..\packages\Suave\lib\net40\Suave.dll"
+#r @"System.Core.dll"
+#r @"System.dll"
+#r @"..\..\..\packages\Microsoft.ServiceFabric\lib\net45\System.Fabric.Common.Internal.dll"
+#r @"..\..\..\packages\Microsoft.ServiceFabric\lib\net45\System.Fabric.Common.Internal.Strings.dll"
+#r @"..\..\..\..\..\..\..\..\WINDOWS\Microsoft.Net\assembly\GAC_64\System.Fabric\v4.0_4.0.0.0__31bf3856ad364e35\System.Fabric.dll"
+#r @"System.Numerics.dll"
+#r @"System.Runtime.Serialization.dll"
+#r @"System.ServiceModel.dll"
+#r @"System.Xml.dll"
