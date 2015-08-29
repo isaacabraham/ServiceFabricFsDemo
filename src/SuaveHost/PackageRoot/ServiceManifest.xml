@@ -25,7 +25,7 @@
 
   <Resources>
     <Endpoints>
-      <Endpoint Name="ServiceEndpoint" Type="Input" Protocol="http" Port="8083"/>
+      <Endpoint Name="SuaveEndpoint" Type="Input" Protocol="http" Port="8083"/>
     </Endpoints>
   </Resources>
 </ServiceManifest>
