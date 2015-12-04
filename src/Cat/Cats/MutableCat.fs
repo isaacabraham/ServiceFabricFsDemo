@@ -10,7 +10,7 @@ open Microsoft.ServiceFabric.Actors
 open FSharp.Data.UnitSystems.SI.UnitSymbols
 
 type MutableCat() =
-    inherit Actor<MutableCatState>()
+    inherit StatefulActor<MutableCatState>()
     let emptyTask() = Task.FromResult() :> Task
     let favouriteFood = "Sheba"
 

@@ -42,7 +42,7 @@ module CatActions =
             CatHappiness = state.CatHappiness + 1
             OwnerHappiness = state.OwnerHappiness - 1 }
     let meow volume (timeOfDay:TimeSpan) state =
-        let timeMultiplier = if timeOfDay.Hours < 8 then 3 elif timeOfDay.Hours > 22 then 2 else 1            
+        let timeMultiplier = if timeOfDay.Hours < 8 then 3 elif timeOfDay.Hours > 22 then 2 else 1
         { state with
             OwnerHappiness = state.OwnerHappiness - (volume * timeMultiplier)
             CatHappiness = state.CatHappiness - 1 }
@@ -59,7 +59,7 @@ type CatAction =
 | Meow of volume:int * timeOfDay:TimeSpan
 
 type PatternMatchingCat() =
-    inherit Actor<ImmutableCatState>()
+    inherit StatefulActor<ImmutableCatState>()
     let favouriteFood = "Sheba"
 
     member actor.Perform action =

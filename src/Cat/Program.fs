@@ -8,6 +8,6 @@ open Microsoft.ServiceFabric.Actors
 [<EntryPoint>]
 let main argv = 
     use fabricRuntime = FabricRuntime.Create()
-    fabricRuntime.RegisterActor(typeof<Cat>)
+    fabricRuntime.RegisterActor<Cat>()
     Thread.Sleep(Timeout.Infinite)
     0

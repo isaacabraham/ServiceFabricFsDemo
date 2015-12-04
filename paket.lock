@@ -1,19 +1,17 @@
 REDIRECTS: ON
 NUGET
-  remote: https://www.nuget.org/api/v2
+  remote: http://api.nuget.org/v3/index.json
   specs:
     FSharp.Core (4.0.0.1)
-    FsPickler (1.2.21)
-    Microsoft.ServiceFabric (4.0.1427-preview1) - framework: >= net451
-    Microsoft.ServiceFabric.Actors (1.0.328-preview1) - framework: >= net451
-      Microsoft.ServiceFabric (>= 4.0.1427-preview1)
-      Microsoft.ServiceFabric.Data (>= 1.0.328-preview1)
-      Microsoft.ServiceFabric.Services (>= 1.0.328-preview1)
-    Microsoft.ServiceFabric.Data (1.0.328-preview1) - framework: >= net451
-      Microsoft.ServiceFabric (>= 4.0.1427-preview1)
-    Microsoft.ServiceFabric.Services (1.0.328-preview1) - framework: >= net451
-      Microsoft.ServiceFabric (>= 4.0.1427-preview1)
-      Microsoft.ServiceFabric.Data (>= 1.0.328-preview1)
-    Suave (0.30.0)
-      FSharp.Core (>= 3.1.2.1)
-      FsPickler (>= 1.2.5)
+    Microsoft.ServiceFabric (4.4.87-preview)
+    Microsoft.ServiceFabric.Actors (1.4.87-preview)
+      Microsoft.ServiceFabric (4.4.87-preview)
+      Microsoft.ServiceFabric.Data (1.4.87-preview)
+      Microsoft.ServiceFabric.Services (1.4.87-preview)
+    Microsoft.ServiceFabric.Data (1.4.87-preview)
+      Microsoft.ServiceFabric (4.4.87-preview)
+    Microsoft.ServiceFabric.Services (1.4.87-preview)
+      Microsoft.ServiceFabric (4.4.87-preview)
+      Microsoft.ServiceFabric.Data (1.4.87-preview)
+    Suave (0.33.0)
+      FSharp.Core (>= 3.1.2.5)

@@ -7,4 +7,5 @@
          For example: <ClusterConnectionParameters />
   -->
   <ClusterConnectionParameters />
+  <ApplicationParameterFile Path="..\ApplicationParameters\Local.xml" />
 </PublishProfile>

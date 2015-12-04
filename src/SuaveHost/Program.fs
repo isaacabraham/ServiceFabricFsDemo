@@ -1,19 +1,17 @@
-﻿open Microsoft.ServiceFabric.Services
-open Suave
+﻿open Suave
 open Suave.Http.Successful
 open Suave.Types
-open Suave.Utils
 open Suave.Web
-open System
 open System.Fabric
 open System.Threading
 open System.Threading.Tasks
 open Suave.Http
-open Suave.Http.Applicatives
+open Microsoft.ServiceFabric.Services.Runtime
+open Microsoft.ServiceFabric.Services.Communication.Runtime
 
 type SuaveService() =
     inherit StatelessService()
-    let mutable port = 8083 // default port
+
     let buildConfig portToUse =
         { defaultConfig with
             bindings =
@@ -21,22 +19,24 @@ type SuaveService() =
                     socketBinding =
                         { defaultConfig.bindings.Head.socketBinding with
                             port = uint16 portToUse } } ] }
-    override __.CreateCommunicationListener() =
-        { new ICommunicationListener with
-            member __.Abort() = ()
-            member __.CloseAsync _ = Task.FromResult() :> Task
-            member __.Initialize parameters =
-                // We get the port to use for Suave from configuration.
-                port <- parameters.CodePackageActivationContext.GetEndpoint("SuaveEndpoint").Port
-            member __.OpenAsync cancellationToken =
-                async {
-                    let config = buildConfig port
-                    let starting, server = startWebServerAsync config (context (fun _ -> OK <| sprintf "Hello from Service Fabric: %O" System.DateTime.UtcNow))
-                    Async.Start(server, cancellationToken)
-                    do! starting |> Async.Ignore
-                    return (defaultConfig.bindings.Head.ToString())
-                } |> Async.StartAsTask
-        }
+    
+    override __.CreateServiceInstanceListeners() =
+        seq {
+            yield ServiceInstanceListener(fun parameters ->
+                { new ICommunicationListener with
+                    member __.Abort() = ()
+                    member __.CloseAsync _ = Task.FromResult() :> Task
+                    member __.OpenAsync cancellationToken =
+                        async {
+                            let config =
+                                parameters.CodePackageActivationContext.GetEndpoint("SuaveEndpoint").Port
+                                |> buildConfig
+                            let starting, server = startWebServerAsync config (OK "Hello from Service Fabric!")
+                            Async.Start(server, cancellationToken)
+                            do! starting |> Async.Ignore
+                            return (defaultConfig.bindings.Head.ToString())
+                        } |> Async.StartAsTask
+                }) }
 
 [<EntryPoint>]
 let main argv = 
